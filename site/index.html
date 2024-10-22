@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedéx</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <div>
+
+        <h1>Bem-vindo à pokedéx!</h1>
+
+        <p>Qual seu nome?</p>
+        <input type="text" id="nome"></input>
+        <br>
+        <p>Qual sua data de nascimento?</p>
+        <input type="date" id="data"></input>
+        <br>
+        <p>Qual seu gênero?</p>
+        <input type="radio" id="Masculino" value="Masculino" name="sexo" onclick="Masculino()">Masculino</input>
+        <input type="radio" id="Feminino" value="Feminino" name="sexo" onclick="Feminino()">Feminino</input>
+        <br>
+        <br>
+        <input type="button" value="Enviar!" onclick="salvar()"></input>
+
+        
+
+    </div>
+    <script>
+
+function salvar() {
+    let nome = document.getElementById("nome").value;
+    let data = document.getElementById("data").value;
+    let sexo = ""; // Declaração fora do bloco condicional
+
+    if (document.getElementById("Masculino").checked === true) {
+        sexo = document.getElementById("Masculino").value;
+    } else if (document.getElementById("Feminino").checked === true) {
+        sexo = document.getElementById("Feminino").value;
+    }
+
+    console.log(sexo); // Agora sexo será acessível aqui
+
+    localStorage.setItem("nome", nome);
+    localStorage.setItem("data", data);
+    localStorage.setItem("sexo", sexo);
+
+    window.location.href = "pagina2.html";
+}
+
+
+    function Feminino(){
+
+        document.getElementById("Masculino").checked = false;
+
+    }
+
+    function Masculino(){
+
+    document.getElementById("Feminino").checked = false;
+    console.log("deu certo")
+
+    }
+
+
+    </script>
+
+</body>
+</html>
